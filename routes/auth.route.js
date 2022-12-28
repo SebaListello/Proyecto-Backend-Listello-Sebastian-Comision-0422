@@ -1,8 +1,8 @@
-import express from "express";
+import { Router } from "express";
 import { login, register } from "../controllers/auth.controller.js";
 import { body } from "express-validator";
 import { validationResultExp } from "../middlewares/validationResultExp.js";
-const router = express.Router();
+const router = Router();
 
 router.post(
   "/register",
@@ -11,9 +11,7 @@ router.post(
       .trim()
       .isEmail()
       .normalizeEmail(),
-    body("password", "Minimo 6 caracteres")
-      .trim()
-      .isLength({ min: 6 }),
+    body("password", "Minimo 6 caracteres").trim().isLength({ min: 6 }),
     body("password", "Formato de password incorrecto")
       .trim()
       .custom((value, { req }) => {
@@ -42,4 +40,4 @@ router.post(
   login
 );
 
-export default router;
+export default Router;
