@@ -6,7 +6,7 @@ import authRouter from './routes/auth.route.js'
 const app = express()
 
 app.use(express.json());
-app.use('/', authRouter);
+app.use('/auth', authRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log("Servidor en puerto " + PORT))
